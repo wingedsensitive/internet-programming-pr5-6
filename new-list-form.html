@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="uk">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Створення нового списку слів у GrammarFerret">
+    <title>Створити новий список - GrammarFerret</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Перейти до основного вмісту</a>
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="images/site_embl.jpg" alt="На головну сторінку" width="40" height="40" aria-hidden="true" class="site-logo">
+            <span>GrammarFerret</span>
+        </a>
+        
+        <nav aria-label="Основна навігація">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="practice.html">Practice</a></li>
+                <li><a href="progress.html">Progress</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Виправлено посилання з account.html на login.html -->
+        <a href="login.html" class="account-link">
+            <img src="images/account.png" alt="Профіль користувача" width="40" height="40" aria-hidden="true" class="account-logo">
+            <span>Account</span>
+        </a>
+    </header>
+
+    <main id="main-content">
+        <section aria-labelledby="form-title">
+            <h1 id="form-title">Створення нового списку слів</h1>
+            <p>Заповніть форму, щоб додати новий тематичний модуль для вивчення.</p>
+
+            <form action="/api/word-lists" method="POST">
+                
+                <div>
+                    <label for="list-title">Назва списку</label>
+                    <input 
+                        id="list-title" 
+                        name="listTitle" 
+                        type="text" 
+                        minlength="3" 
+                        maxlength="60" 
+                        required
+                    >
+                </div>
+
+                <div>
+                    <label for="list-category">Тематична категорія</label>
+                    <select id="list-category" name="category" required>
+                        <option value="">-- Оберіть категорію --</option>
+                        <option value="spoken">Розмовна англійська</option>
+                        <option value="tech">Комп'ютерне обладнання та IT</option>
+                        <option value="business">Бізнес та фінанси</option>
+                        <option value="travel">Подорожі</option>
+                        <option value="general">Загальна лексика</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="list-description">Опис списку</label>
+                    <textarea 
+                        id="list-description" 
+                        name="description" 
+                        rows="4" 
+                        cols="40" 
+                        maxlength="300"
+                        placeholder="Коротко опишіть, для чого призначений цей список..."
+                    ></textarea>
+                </div>
+
+                <div>
+                    <label for="daily-goal">Денна ціль (кількість слів на день)</label>
+                    <p id="goal-hint">Вкажіть цільову кількість слів від 1 до 50, яку ви плануєте вчити щодня.</p>
+                    <input 
+                        id="daily-goal" 
+                        name="dailyGoal" 
+                        type="number" 
+                        min="1" 
+                        max="50" 
+                        value="5" 
+                        aria-describedby="goal-hint"
+                        required
+                    >
+                </div>
+
+                <fieldset>
+                    <legend>Рівень складності масиву слів</legend>
+                    <div>
+                        <input id="level-beginner" name="difficulty" type="radio" value="beginner" checked>
+                        <label for="level-beginner">Початковий (A1–A2)</label>
+                    </div>
+                    <div>
+                        <input id="level-intermediate" name="difficulty" type="radio" value="intermediate">
+                        <label for="level-intermediate">Середній (B1–B2)</label>
+                    </div>
+                    <div>
+                        <input id="level-advanced" name="difficulty" type="radio" value="advanced">
+                        <label for="level-advanced">Просунутий (C1–C2)</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Налаштування доступу та сповіщень</legend>
+                    <div>
+                        <input id="opt-favorite" name="options" type="checkbox" value="favorite">
+                        <label for="opt-favorite">Додати список до обраного</label>
+                    </div>
+                    <div>
+                        <input id="opt-reminder" name="options" type="checkbox" value="reminder">
+                        <label for="opt-reminder">Нагадувати про повторення матеріалу</label>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <button type="submit">Створити список</button>
+                    <a href="vocabulary.html">Скасувати</a>
+                </div>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <address>
+            <ul>
+                <li>
+                    <img src="images/telegram.png" alt="телеграм канал" width="26" height="26" aria-hidden="true">
+                    <a href="https://t.me/wingedsensitive" target="_blank" rel="noopener" aria-label="Перейти в Telegram акаунт @wingedsensitive">@wingedsensitive</a>
+                </li>
+                <li>
+                    <img src="images/phone.png" alt="телефон" width="26" height="26" aria-hidden="true">
+                    <a href="tel:+380639392820" aria-label="Зателефонувати за номером +380639392820">+380 (63) 939-28-20</a>
+                </li>
+                <li>
+                    <img src="images/gmail.png" alt="пошта gmail" width="26" height="26" aria-hidden="true">
+                    <a href="mailto:katiakate555@gmail.com" aria-label="Надіслати електронного листа на katiakate555@gmail.com">katiakate555@gmail.com</a>
+                </li>
+            </ul>
+        </address>
+    </footer>
+</body>
+
+</html>

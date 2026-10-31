@@ -1,0 +1,900 @@
+/* ==========================================
+   1. DESIGN TOKENS ТА БАЗОВІ СТИЛІ
+   ========================================== */
+:root {
+    --color-background: #EBE9E4;
+    --color-header: #2B2744;
+    --color-primary: #5F4B8B;
+    --color-primary-dark: #433366; 
+    --color-surface: #E8E5EE;
+    --color-surface-alt: #D6CFE2;
+    --color-accent: #78B860;
+    --color-accent-hover: #65A152;
+    --color-nav-active: #6BA19C;
+    --color-text: #2C2C2C;
+    --color-danger: #b42318;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+
+    --radius-sm: 0.5rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.5rem; 
+    --radius-pill: 2rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================
+   2. ТИПОГРАФІКА
+   ========================================== */
+h1, h2, h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+    font-weight: 600;
+}
+
+h1 { 
+    font-size: 1.5rem; 
+    margin-bottom: 1.2rem; 
+}
+
+h1 span, h2 span { 
+    font-size: 1.1rem; 
+    font-weight: 400; 
+}
+
+h2 { 
+    font-size: 1.3rem; 
+    margin-bottom: 1.2rem; 
+}
+
+.daily-challenge h1, .page-title {
+    font-size: 1.8rem; 
+    color: var(--color-primary-dark);
+}
+
+.daily-challenge h1 span, .page-title span {
+    font-size: 1.2rem;
+}
+
+/* ==========================================
+   3. LAYOUT ТА ХЕДЕР (MOBILE-FIRST)
+   ========================================== */
+main {
+    width: min(100% - 2rem, 1200px);
+    margin: 0 auto;
+    padding: var(--space-3) 0;
+}
+
+header {
+    background-color: var(--color-header);
+    color: #ffffff;
+    padding: var(--space-2) var(--space-3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+}
+
+.site-logo, .account-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Приховуємо стандартне меню хедера на смартфонах */
+header nav {
+    display: none;
+}
+
+/* ==========================================
+   4. ПЛАВАЮЧЕ МЕНЮ (FAB) ДЛЯ МОБІЛЬНИХ
+   ========================================== */
+.floating-menu-container {
+    display: flex;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.25rem;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 9999;
+}
+
+.fab-btn {
+    width: 56px;
+    height: 56px;
+    background-color: var(--color-header);
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.fab-btn span {
+    width: 22px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.fab-btn.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.fab-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.fab-btn.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.fab-nav {
+    background-color: var(--color-header);
+    padding: 0.5rem;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+}
+
+.fab-nav.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.fab-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.fab-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+}
+
+.fab-nav a:hover, .fab-nav a:active {
+    background-color: var(--color-nav-active);
+}
+
+/* ==========================================
+   5. МАКЕТ ДАШБОРДУ ТА КАРТОК
+   ========================================== */
+.dashboard-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem; 
+}
+
+.card {
+    background-color: var(--color-surface);
+    padding: var(--space-3);
+    border-radius: var(--radius-lg); 
+}
+
+.challenge-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.challenge-card .translation {
+    color: var(--color-primary-dark);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.challenge-card .example {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.btn-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1.5rem;
+}
+
+.btn-green {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    min-height: 44px;
+    transition: all 0.2s ease;
+}
+
+.btn-green:hover {
+    background-color: var(--color-accent-hover);
+}
+
+.stat-link {
+    display: block;
+    text-decoration: none;
+}
+
+.stat-figure { margin: 0; padding: 0; }
+.stat-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg); 
+    display: block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================
+   6. СТОРОНА VOCABULARY ТА СІТКИ
+   ========================================== */
+.controls-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.add-list-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--color-primary-dark);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.add-list-link img.plus-icon {
+    border-radius: 12px;
+}
+
+.sort-select {
+    background-color: var(--color-surface-alt);
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-pill);
+    color: var(--color-primary-dark);
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    font-weight: 500;
+    min-height: 44px;
+}
+
+.vocab-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.list-card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.list-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-primary-dark);
+    line-height: 1.3;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.progress-text {
+    font-weight: bold;
+    color: var(--color-text);
+    font-size: 1rem;
+}
+
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: auto;
+}
+
+.btn-green-full, .btn-outline-full {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-weight: 600;
+    min-height: 44px;
+    transition: 0.2s ease;
+}
+
+.btn-green-full {
+    background-color: var(--color-accent);
+    color: white;
+}
+.btn-green-full:hover { background-color: var(--color-accent-hover); }
+
+.btn-outline-full {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--color-primary-dark);
+    border: none;
+}
+.btn-outline-full:hover { background-color: rgba(255, 255, 255, 0.8); }
+
+.other-authors-section {
+    background-color: var(--color-surface);
+    padding: var(--space-3);
+    border-radius: var(--radius-lg);
+    margin-top: 2.5rem;
+}
+
+.empty-state {
+    margin-top: 1rem;
+    color: var(--color-text);
+}
+
+progress {
+    width: 100%;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    margin-top: 0.5rem;
+}
+progress::-webkit-progress-bar { background-color: #ffffff; border-radius: var(--radius-pill); }
+progress::-webkit-progress-value { background-color: var(--color-primary); border-radius: var(--radius-pill); }
+
+/* Сітка малої лексики */
+.lists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.vocab-card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.vocab-percent {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.vocab-card:nth-child(1) .vocab-percent {
+    background-color: #B29DCC;
+    color: #000;
+}
+
+.vocab-card:nth-child(2) .vocab-percent {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.vocab-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.vocab-info h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.vocab-info p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--color-text);
+}
+
+.vocab-btn {
+    width: 44px;
+    height: 44px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+/* ==========================================
+   7. АДАПТИВНА ТАБЛИЦЯ ТА ФОРМИ
+   ========================================== */
+.table-section {
+    margin-top: 2rem;
+}
+
+.table-section > div {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+/* Контейнер картки таблиці для мобільних */
+.table-wrapper {
+    width: 100%;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: 0.5rem 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Трансформація таблиці у картковий вертикальний список на мобільному */
+.table-section table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+}
+
+.table-section thead {
+    display: none; /* Ховаємо колонки заголовків на смартфоні */
+}
+
+.table-section tbody {
+    display: block;
+    width: 100%;
+}
+
+.table-section tr {
+    display: block;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.table-section tr:last-child {
+    border-bottom: none;
+}
+
+.table-section td {
+    display: block;
+    padding: 0.1rem 0;
+    border: none;
+    white-space: normal;
+}
+
+/* Англійське слово (перший рядок) */
+.table-section td:nth-child(1) {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text);
+}
+
+/* Переклад (другий рядок) */
+.table-section td:nth-child(2) {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 0.15rem;
+}
+
+/* Контекст використання */
+.table-section td:nth-child(3) {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 0.25rem;
+}
+
+/* Статус із додаванням автоматичного тексту "Статус: " */
+.table-section td:nth-child(4) {
+    font-size: 0.9rem;
+    color: var(--color-text);
+}
+
+.table-section td:nth-child(4)::before {
+    content: "Статус: ";
+    font-weight: 400;
+    color: var(--color-text);
+}
+
+caption {
+    text-align: left;
+    padding: 0.5rem 0;
+    color: var(--color-text);
+    font-size: 0.85rem;
+}
+
+/* ФОРМИ */
+form[action="/api/word-lists"], .auth-form {
+    width: 100%;
+    max-width: 550px;
+    background-color: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    margin: 1.5rem auto 3rem auto;
+}
+
+form[action="/api/word-lists"] > div, .auth-form > div {
+    margin-bottom: 1.25rem;
+}
+
+form label, .auth-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form select,
+form textarea,
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d1e0;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: #fff;
+    min-height: 44px;
+}
+
+form input:focus, form select:focus, form textarea:focus, .auth-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(98, 60, 228, 0.15);
+}
+
+.auth-form input:user-invalid,
+form[action="/api/word-lists"] input:user-invalid {
+    border-color: var(--color-danger);
+    box-shadow: 0 0 0 1px var(--color-danger);
+}
+
+form fieldset {
+    border: 1px solid #d1d1e0;
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    background-color: #faf9fd;
+}
+
+form legend {
+    padding: 0 0.5rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    font-size: 0.95rem;
+}
+
+form fieldset > div {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+form input[type="radio"], form input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+form fieldset label {
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+form[action="/api/word-lists"] > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+form button[type="submit"], .auth-form button[type="submit"] {
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-pill);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 44px;
+}
+
+.auth-form .form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.auth-form button[type="submit"] {
+    width: 100%;
+}
+
+.auth-form .form-actions span { text-align: center; }
+.auth-form a { color: var(--color-primary); font-weight: 600; text-decoration: none; }
+
+section[aria-labelledby="form-title"],
+section[aria-labelledby="login-title"],
+section[aria-labelledby="register-title"] {
+    text-align: center;
+}
+
+form textarea {
+    resize: vertical; /* Дозволяє змінювати розмір ТІЛЬКИ по вертикалі */
+    min-height: 90px;
+    max-height: 250px;
+}
+
+/* ==========================================
+   8. ФУТЕР
+   ========================================== */
+footer {
+    padding: var(--space-3);
+    background-color: var(--color-surface-alt);
+    margin-top: 3rem;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+footer a {
+    color: var(--color-primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.visually-hidden, .skip-link {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.skip-link:focus {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: auto;
+    height: auto;
+    clip: auto;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-primary);
+    color: #fff;
+    z-index: 10000;
+}
+
+/* ==========================================
+   9. MEDIA QUERIES (ПЛАНШЕТИ ТА ДЕСКТОПИ)
+   ========================================== */
+
+/* Tablet / Desktop (від 850px) */
+@media (min-width: 53rem) {
+    h1 { font-size: 1.75rem; }
+    .daily-challenge h1, .page-title { font-size: 2.2rem; }
+
+    main {
+        padding: var(--space-4) 0;
+    }
+
+    header {
+        padding: var(--space-2) var(--space-4);
+    }
+
+    /* Відновлюємо десктопну навігацію в хедері */
+    header nav {
+        display: block;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: var(--space-1);
+    }
+
+    nav a {
+        padding: 0.5rem 1.5rem;
+        border-radius: var(--radius-pill);
+        color: white;
+        text-decoration: none;
+    }
+
+    nav a[aria-current="page"] {
+        background: var(--color-nav-active);
+    }
+
+    /* Приховуємо мобільне FAB-меню */
+    .floating-menu-container {
+        display: none;
+    }
+
+    .dashboard-top {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 3rem;
+    }
+
+    .card {
+        padding: var(--space-4);
+    }
+
+    /* Повертаємо класичний вигляд таблиці на великих екранах */
+    .table-wrapper {
+        padding: 0;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .table-section table {
+        display: table;
+        background-color: var(--color-surface);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+    }
+
+    .table-section thead {
+        display: table-header-group;
+    }
+
+    .table-section tbody {
+        display: table-row-group;
+    }
+
+    .table-section tr {
+        display: table-row;
+        padding: 0;
+        border-bottom: none;
+    }
+
+    .table-section td {
+        display: table-cell;
+        padding: 0.85rem 1.25rem;
+        border-bottom: 1px solid var(--color-background);
+    }
+
+    .table-section tr:last-child td {
+        border-bottom: none;
+    }
+
+    .table-section td:nth-child(1),
+    .table-section td:nth-child(2),
+    .table-section td:nth-child(3),
+    .table-section td:nth-child(4) {
+        font-weight: normal;
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+
+    .table-section td:nth-child(1) {
+        font-weight: 500;
+    }
+
+    .table-section td:nth-child(4)::before {
+        content: "";
+    }
+
+    form[action="/api/word-lists"], .auth-form {
+        padding: 2.5rem;
+    }
+
+    footer {
+        padding: var(--space-4);
+        margin-top: 4rem;
+    }
+}
+
+/* ==========================================
+   10. ПІДТРИМКА REDUCED MOTION
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

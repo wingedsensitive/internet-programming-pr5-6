@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Реєстрація нового акаунта GrammarFerret">
+    <title>Реєстрація - GrammarFerret</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+        <a href="#main-content" class="skip-link">Перейти до основного вмісту</a>    
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="images/site_embl.jpg" alt="На головну сторінку" width="40" height="40" aria-hidden="true" class="site-logo">
+            <span>GrammarFerret</span>
+        </a>
+        <nav aria-label="Основна навігація">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section aria-labelledby="register-title">
+            <h1 id="register-title">Створення облікового запису</h1>
+            <p>Заповніть форму, щоб розпочати навчання в GrammarFerret.</p>
+
+            <!-- Форма реєстрації з новим класом -->
+            <form action="/api/register" method="POST" class="auth-form">
+                <div>
+                    <label for="register-name">Ім'я або нікнейм</label>
+                    <input id="register-name" name="displayName" type="text" autocomplete="name" minlength="2" maxlength="50" required>
+                </div>
+
+                <div>
+                    <label for="register-email">Електронна пошта</label>
+                    <input id="register-email" name="email" type="email" autocomplete="email" required>
+                </div>
+
+                <div>
+                    <label for="register-password">Пароль</label>
+                    <p id="password-hint" class="hint-text">Пароль має містити щонайменше 8 символів.</p>
+                    <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" aria-describedby="password-hint" required>
+                </div>
+
+                <div>
+                    <label for="register-password-confirm">Підтвердьте пароль</label>
+                    <input id="register-password-confirm" name="passwordConfirm" type="password" autocomplete="new-password" minlength="8" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit">Зареєструватися</button>
+                    <span>Вже є акаунт? <a href="login.html">Увійти</a></span>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <address>
+            <ul>
+                <li>
+                    <img src="images/telegram.png" alt="телеграм канал" width="26" height="26" aria-hidden="true">
+                    <a href="https://t.me/wingedsensitive" target="_blank" rel="noopener" aria-label="Перейти в Telegram акаунт @wingedsensitive">@wingedsensitive</a>
+                </li>
+                <li>
+                    <img src="images/phone.png" alt="телефон" width="26" height="26" aria-hidden="true">
+                    <a href="tel:+380639392820" aria-label="Зателефонувати за номером +380639392820">+380 (63) 939-28-20</a>
+                </li>
+                <li>
+                    <img src="images/gmail.png" alt="пошта gmail" width="26" height="26" aria-hidden="true">
+                    <a href="mailto:katiakate555@gmail.com" aria-label="Надіслати електронного листа на katiakate555@gmail.com">katiakate555@gmail.com</a>
+                </li>
+            </ul>
+        </address>
+    </footer>
+</body>
+</html>

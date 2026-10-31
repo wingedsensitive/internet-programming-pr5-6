@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Твої списки слів та словники інших користувачів">
+    <title>Vocabulary - GrammarFerret</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Перейти до основного вмісту</a>
+    
+    <header>
+        <a href="index.html" class="logo-link">
+            <!-- Додано клас site-logo для округлення -->
+            <img src="images/site_embl.jpg" alt="На головну сторінку" width="40" height="40" aria-hidden="true" class="site-logo">
+            <span>GrammarFerret</span>
+        </a>
+        <nav aria-label="Основна навігація">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vocabulary.html" aria-current="page">Vocabulary</a></li>
+                <li><a href="practice.html">Practice</a></li>
+                <li><a href="progress.html">Progress</a></li>
+            </ul>
+        </nav>
+        
+        <a href="login.html" class="account-link">
+            <!-- Додано клас account-logo для округлення -->
+            <img src="images/account.png" alt="Профіль користувача" width="40" height="40" aria-hidden="true" class="account-logo">
+            <span>Account</span>
+        </a>
+    </header>
+
+    <main id="main-content">
+        <section aria-labelledby="my-lists-title">
+            <h1 id="my-lists-title" class="page-title">Твої списки слів <span>(Your word lists)</span></h1>
+            
+            <div class="controls-wrapper">
+                <!-- Об'єднано іконку та текст в єдине посилання -->
+                <a href="new-list-form.html" class="add-list-link" aria-label="Додати новий список">
+                    <img src="images/plus-icon.png" alt="" width="44" height="44" aria-hidden="true" class="plus-icon">
+                    <span>Додати новий список</span>
+                </a>
+                
+                <form action="#" method="GET" class="sort-form">
+                    <label for="sort-lists" class="visually-hidden">Сортувати списки</label>
+                    <select id="sort-lists" name="sort" class="sort-select">
+                        <option value="recent">Сортувати за: Недавні</option>
+                        <option value="name">Сортувати за: Назвою</option>
+                        <option value="progress">Сортувати за: Прогресом</option>
+                    </select>
+                </form>
+            </div>
+
+            <!-- Нова сітка витягнутих блоків для списків слів -->
+            <div class="vocab-cards-grid">
+                <article class="list-card" aria-labelledby="list-spoken">
+                    <h2 id="list-spoken">Розмовна<br>англійська</h2>
+                    <div class="progress-wrapper">
+                        <span class="progress-text">30%</span>
+                        <progress value="30" max="100">30%</progress>
+                    </div>
+                    <div class="card-actions">
+                        <a href="learn-spoken.html" class="btn-green-full">Вчити</a>
+                        <a href="edit-spoken.html" class="btn-outline-full">Редагувати</a>
+                    </div>
+                </article>
+
+                <article class="list-card" aria-labelledby="list-tech">
+                    <h2 id="list-tech">Комп'ютерне<br>обладнання</h2>
+                    <div class="progress-wrapper">
+                        <span class="progress-text">78%</span>
+                        <progress value="78" max="100">78%</progress>
+                    </div>
+                    <div class="card-actions">
+                        <a href="learn-tech.html" class="btn-green-full">Вчити</a>
+                        <a href="edit-tech.html" class="btn-outline-full">Редагувати</a>
+                    </div>
+                </article>
+
+                <article class="list-card" aria-labelledby="list-countries">
+                    <h2 id="list-countries">Країни та<br>міста</h2>
+                    <div class="progress-wrapper">
+                        <span class="progress-text">46%</span>
+                        <progress value="46" max="100">46%</progress>
+                    </div>
+                    <div class="card-actions">
+                        <a href="learn-countries.html" class="btn-green-full">Вчити</a>
+                        <a href="edit-countries.html" class="btn-outline-full">Редагувати</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="other-authors-title" class="other-authors-section">
+            <h2 id="other-authors-title">Списки слів інших авторів <span>(Word lists by other authors)</span></h2>
+            <div class="empty-state" role="status" aria-live="polite">
+                <p>Поки немає інших списків. Станьте першим, хто створить публічний словник!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <address>
+            <ul>
+                <li>
+                    <img src="images/telegram.png" alt="телеграм канал" width="26" height="26" aria-hidden="true">
+                    <a href="https://t.me/wingedsensitive" target="_blank" rel="noopener" aria-label="Перейти в Telegram акаунт @wingedsensitive">@wingedsensitive</a>
+                </li>
+                <li>
+                    <img src="images/phone.png" alt="телефон" width="26" height="26" aria-hidden="true">
+                    <a href="tel:+380639392820" aria-label="Зателефонувати за номером +380639392820">+380 (63) 939-28-20</a>
+                </li>
+                <li>
+                    <img src="images/gmail.png" alt="пошта gmail" width="26" height="26" aria-hidden="true">
+                    <a href="mailto:katiakate555@gmail.com" aria-label="Надіслати електронного листа на katiakate555@gmail.com">katiakate555@gmail.com</a>
+                </li>
+            </ul>
+        </address>
+    </footer>
+    <!-- Плаваюче меню для мобільних пристроїв -->
+<div class="floating-menu-container">
+    <nav class="fab-nav" aria-label="Мобільна навігація">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="vocabulary.html">Vocab</a></li>
+            <li><a href="#word-section-title">Practice</a></li>
+            <li><a href="#stat-title">Progress</a></li>
+        </ul>
+    </nav>
+    <button class="fab-btn" aria-label="Відкрити меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fabBtn = document.querySelector('.fab-btn');
+        const fabNav = document.querySelector('.fab-nav');
+
+        if (fabBtn && fabNav) {
+            fabBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                fabNav.classList.toggle('active');
+                
+                // Зміна aria-атрибуту для доступності
+                const isExpanded = this.classList.contains('active');
+                this.setAttribute('aria-expanded', isExpanded);
+            });
+        }
+    });
+</script>
+</body>
+</html>

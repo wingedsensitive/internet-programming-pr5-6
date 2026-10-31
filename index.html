@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Вчіть англійську із задоволенням">
+    <title>GrammarFerret</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Перейти до основного вмісту</a> 
+    
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="images/site_embl.jpg" alt="На головну сторінку" width="40" height="40" aria-hidden="true" class="site-logo">
+            <span>GrammarFerret</span>
+        </a>
+        <nav aria-label="Основна навігація">
+            <ul>
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="#word-section-title">Practice</a></li>
+                <li><a href="#stat-title">Progress</a></li>
+            </ul>
+        </nav>
+        
+        <a href="login.html" class="account-link">
+            <img src="images/account.png" alt="Профіль користувача" width="34" height="34" aria-hidden="true" class="account-logo">
+            <span>Account</span>
+        </a>
+    </header>
+
+    <main id="main-content">
+        <!-- Блок у дві колонки -->
+        <div class="dashboard-top">
+            <section class="daily-challenge" aria-labelledby="main-challenge-title">
+                <h1 id="main-challenge-title">Твій щоденний виклик <span>(your daily challenge)</span></h1>
+                <article class="card challenge-card" aria-labelledby="phrase-title">
+                    <h2 id="phrase-title">“Get the hang of”</h2>
+                    <p class="translation"><strong>набити руку, освоїти</strong></p>
+                    <p class="description">To learn how to do something or begin to understand how it works through practice</p>
+                    <div class="example">
+                        <strong>Example:</strong>
+                        <p><em>It was hard at first, but she soon got the hang of riding a bike.</em></p>
+                    </div>
+                    <div class="btn-wrapper">
+                        <a href="exercise.html" class="btn-green" aria-label="виконати вправу до фрази Get the hang of">Виконати вправу</a>
+                    </div>
+                </article>
+            </section>
+
+            <section class="statistics" aria-labelledby="stat-title">
+                <h2 id="stat-title">Your Statistic</h2>
+                <a href="progress.html" class="stat-link">
+                    <figure class="stat-figure">
+                        <img src="images/progress.png" alt="Графік статистики" class="stat-image">
+                        <figcaption class="visually-hidden">
+                            Прогрес за тиждень
+                        </figcaption>
+                    </figure>
+                </a>
+            </section>
+        </div>
+
+        <!-- Списки слів -->
+        <section aria-labelledby="vocab-title" class="vocabulary-section">
+            <h2 id="vocab-title" class="section-title">Списки слів (Vocabulary)</h2>
+            <div class="lists-grid">
+                <article class="vocab-card" aria-labelledby="topic-spoken">
+                    <div class="vocab-percent">30%</div>
+                    <div class="vocab-info">
+                        <h3 id="topic-spoken">Розмовна англійська</h3>
+                        <p>6/20</p>
+                        <progress value="6" max="20">30%</progress>
+                    </div>
+                    <a href="vocabulary-spoken.html" class="vocab-btn" aria-label="Перейти до вивчення слів з теми Розмовна англійська">&rarr;</a>
+                </article>
+
+                <article class="vocab-card" aria-labelledby="topic-tech">
+                    <div class="vocab-percent">78%</div>
+                    <div class="vocab-info">
+                        <h3 id="topic-tech">Комп'ютерне обладнання</h3>
+                        <p>30/36</p>
+                        <progress value="30" max="36">78%</progress>
+                    </div>
+                    <a href="vocabulary-tech.html" class="vocab-btn" aria-label="Перейти до вивчення слів з теми Комп'ютерне обладнання">&rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Таблиця слів -->
+        <section aria-labelledby="word-section-title" class="table-section">
+            <h2 id="word-section-title" class="section-title">Таблиця слів для вивчення</h2>
+            <div>
+                <a href="learning-session.html" class="btn-green" aria-label="Розпочати вчити слова">Вчити слова</a>
+            </div>
+            
+            <!-- Додано адаптивну обгортку для таблиці -->
+            <div class="table-wrapper">
+                <table>
+                    <caption>Слова, переклад слів, контекст використання слова, статус вивчення</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"><strong>Слово</strong></th>
+                            <th scope="col"><strong>Переклад</strong></th>
+                            <th scope="col"><strong>Контекст</strong></th>
+                            <th scope="col"><strong>Статус</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>eventually</td>
+                            <td>зрештою</td>
+                            <td>I lost my keys, but I eventually found them.</td>
+                            <td><span>&#9679; не вивчено</span></td>
+                        </tr>
+                        <tr>
+                            <td>previously</td>
+                            <td>раніше</td>
+                            <td>She lives in Kyiv now, but she previously lived in Lviv.</td>
+                            <td><span>&#9679; не вивчено</span></td>
+                        </tr>
+                        <tr>
+                            <td>subtle</td>
+                            <td>тонкий, ледь помітний</td>
+                            <td>There was a subtle smell of coffee in the room.</td>
+                            <td><span>&#9679; не вивчено</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <address>
+            <ul>
+                <li>
+                    <img src="images/telegram.png" alt="телеграм канал" width="26" height="26" aria-hidden="true">
+                    <a href="https://t.me/wingedsensitive" target="_blank" rel="noopener" aria-label="Перейти в Telegram акаунт @wingedsensitive">@wingedsensitive</a>
+                </li>
+                <li>
+                    <img src="images/phone.png" alt="телефон" width="26" height="26" aria-hidden="true">
+                    <a href="tel:+380639392820" aria-label="Зателефонувати за номером +380639392820">+380 (63) 939-28-20</a>
+                </li>
+                <li>
+                    <img src="images/gmail.png" alt="пошта gmail" width="26" height="26" aria-hidden="true">
+                    <a href="mailto:katiakate555@gmail.com" aria-label="Надіслати електронного листа на katiakate555@gmail.com">katiakate555@gmail.com</a>
+                </li>
+            </ul>
+        </address>
+    </footer>
+
+    <!-- Плаваюче меню для мобільних пристроїв -->
+    <div class="floating-menu-container">
+        <nav class="fab-nav" aria-label="Мобільна навігація">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vocabulary.html">Vocab</a></li>
+                <li><a href="#word-section-title">Practice</a></li>
+                <li><a href="#stat-title">Progress</a></li>
+            </ul>
+        </nav>
+        <button class="fab-btn" aria-label="Відкрити меню" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fabBtn = document.querySelector('.fab-btn');
+            const fabNav = document.querySelector('.fab-nav');
+
+            if (fabBtn && fabNav) {
+                fabBtn.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    fabNav.classList.toggle('active');
+                    
+                    const isExpanded = this.classList.contains('active');
+                    this.setAttribute('aria-expanded', isExpanded);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
